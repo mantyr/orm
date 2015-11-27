@@ -44,8 +44,8 @@ func TestInsertUpdatePlus_position(t *testing.T) {
     o.Up("cnt = cnt + 1").Up("param", "value2")
 
     val := o.String()
-    text := "INSERT INTO `table`\r\nSET\r\n	,`param` = \"value\"\r\n	`cnt` = \"1\"\r\nON DUPLICATE KEY UPDATE\r\n	cnt = cnt + 1\r\n	,`param` = \"value2\"\r\n"
+    text := "INSERT INTO `table`\r\nSET\r\n	`param` = \"value\"\r\n\t,`cnt` = \"1\"\r\nON DUPLICATE KEY UPDATE\r\n	cnt = cnt + 1\r\n	,`param` = \"value2\"\r\n"
     if val != text {
-        t.Errorf("Error - the location of the fields is mixed %q", val)
+        t.Errorf("Error - the location of the fields is mixed %q %q", val, text)
     }
 }

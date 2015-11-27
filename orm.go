@@ -25,6 +25,12 @@ func New(params ...string) *ORM {
     }
     return o
 }
+func (o *ORM) SetType(Type string) *ORM {
+    if Type == "select" || Type == "insert" || Type == "update" || Type == "insert_update" || Type == "delete" {
+        o.Type = Type
+    }
+    return o
+}
 func (o *ORM) Select(table_name string) *ORM {
     if table_name != "" {
         o.Table = table_name
