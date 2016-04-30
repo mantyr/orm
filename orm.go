@@ -108,6 +108,10 @@ func (o *ORM) Ignore(val bool) *ORM {
 }
 
 func (o *ORM) String() string {
+    if o.Type == "insert_update" && len(o.ValuesUp) == 0 {
+        o.Type = "insert"
+    }
+
     var query string
     if o.Type == "insert" {
         if (o.Ignore_) {
