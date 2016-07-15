@@ -92,6 +92,12 @@ func (o *ORM) Up(name string, params ...interface{}) *ORM {
     return o
 }
 
+func (o *ORM) SetUp(name string, params ...interface{}) *ORM {
+    o.Set(name, params...)
+    o.Up(name, params...)
+    return o
+}
+
 func (o *ORM) Where(st string, params ...interface{}) *ORM {
     for key, param := range params {
         params[key] = Escape_string(Convert_string(param))
